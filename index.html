@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fractie Franssen - Voor een beter Rotterdam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a3a52;
+            --accent: #d4682f;
+            --light: #f5ebe0;
+            --dark: #0d1b2a;
+            --cream: #faf6f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            color: var(--dark);
+            background: var(--cream);
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, #2c5f7c 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 104, 47, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-50px, -30px) rotate(5deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 1200px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 12vw, 8rem);
+            color: white;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            line-height: 0.9;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--light);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .typed-text {
+            border-right: 3px solid var(--accent);
+            padding-right: 8px;
+            animation: blink 0.8s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212, 104, 47, 0.3);
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+            letter-spacing: 0.05em;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 104, 47, 0.4);
+            background: #e57a3d;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 58, 82, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            letter-spacing: 0.05em;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: var(--primary);
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .section-header p {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 700px;
+            margin: 2rem auto 0;
+            line-height: 1.7;
+        }
+
+        /* Standpunten Grid */
+        .standpunten-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .standpunt-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-left: 5px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .standpunt-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 104, 47, 0.03) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .standpunt-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .standpunt-card:hover::before {
+            opacity: 1;
+        }
+
+        .standpunt-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .standpunt-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .standpunt-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        /* Candidates Section */
+        #kandidaten {
+            background: linear-gradient(to bottom, var(--cream) 0%, var(--light) 100%);
+        }
+
+        .kandidaten-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .kandidaat-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .kandidaat-card:hover {
+            transform: translateY(-8px) rotate(-1deg);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .kandidaat-photo {
+            width: 100%;
+            height: 320px;
+            background: linear-gradient(135deg, var(--primary) 0%, #3a5f7c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kandidaat-photo::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 50%, rgba(212, 104, 47, 0.2) 0%, transparent 50%);
+        }
+
+        .kandidaat-info {
+            padding: 2rem;
+        }
+
+        .kandidaat-nummer {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .kandidaat-info h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .kandidaat-functie {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .kandidaat-info p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .standpunten-grid,
+            .kandidaten-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#standpunten">Standpunten</a></li>
+            <li><a href="#kandidaten">Kandidaten</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>FRACTIE<br>FRANSSEN</h1>
+            <div class="hero-subtitle">
+                <span class="typed-text"></span>
+            </div>
+            <p class="hero-tagline">
+                Samen bouwen we aan een sterke, sociale en leefbare stad waar iedereen telt en iedereen meetelt.
+            </p>
+            <a href="#standpunten" class="cta-button">Ontdek onze visie</a>
+        </div>
+    </section>
+
+    <section id="standpunten">
+        <div class="section-header fade-in">
+            <h2>Onze Standpunten</h2>
+            <p>Dit zijn de kernpunten waar Fractie Franssen voor staat. Concreet, uitvoerbaar en gericht op echte verbetering.</p>
+        </div>
+
+        <div class="standpunten-grid">
+            <div class="standpunt-card fade-in">
+                <span class="standpunt-icon">🏘️</span>
+                <h3>Betaalbare Woningen</h3>
+                <p>Iedereen heeft recht op een betaalbare woning. We zetten in op sociale woningbouw en betaalbare huurprijzen voor starters en gezinnen.</p>
+            </div>
+
+            <div class="standpunt-card fade-in">
+                <span class="standpunt-icon">🌳</span>
+                <h3>Groene Stad</h3>
+                <p>Meer groen in de wijken, duurzame energie en bescherming van onze parken. Rotterdam moet een gezonde en groene stad worden voor alle generaties.</p>
+            </div>
+
+            <div class="standpunt-card fade-in">
+                <span class="standpunt-icon">🎓</span>
+                <h3>Onderwijs & Jeugd</h3>
+                <p>Investeren in goed onderwijs en veilige plekken voor onze kinderen. Kleine klassen, goede leerkrachten en moderne schoolgebouwen.</p>
+            </div>
+
+            <div class="standpunt-card fade-in">
+                <span class="standpunt-icon">🚲</span>
+                <h3>Verkeer & Mobiliteit</h3>
+                <p>Veilige fietspaden, goed openbaar vervoer en minder files. We maken Rotterdam toegankelijk voor iedereen, jong en oud.</p>
+            </div>
+
+            <div class="standpunt-card fade-in">
+                <span class="standpunt-icon">💼</span>
+                <h3>Werk & Economie</h3>
+                <p>Steun voor lokale ondernemers en werkgelegenheid voor alle Rotterdammers. Een bloeiende economie waarin niemand aan de kant staat.</p>
+            </div>
+
+            <div class="standpunt-card fade-in">
+                <span class="standpunt-icon">🤝</span>
+                <h3>Sociale Cohesie</h3>
+                <p>Een stad waar we naar elkaar omkijken. Investeren in buurthuizen, ontmoetingsplekken en initiatieven die mensen samenbrengen.</p>
+            </div>
+
+            <div class="standpunt-card fade-in">
+                <span class="standpunt-icon">🏥</span>
+                <h3>Zorg & Welzijn</h3>
+                <p>Toegankelijke zorg voor iedereen, extra aandacht voor ouderen en mensen met een beperking. Niemand mag tussen wal en schip vallen.</p>
+            </div>
+
+            <div class="standpunt-card fade-in">
+                <span class="standpunt-icon">🎨</span>
+                <h3>Cultuur & Evenementen</h3>
+                <p>Ruimte voor kunst, cultuur en festivals. Rotterdam moet bruisen, waar iedereen kan genieten van een rijk cultureel aanbod.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="kandidaten">
+        <div class="section-header fade-in">
+            <h2>Onze Kandidaten</h2>
+            <p>Ontmoet het team van Fractie Franssen. Gedreven mensen met een hart voor de stad en haar inwoners.</p>
+        </div>
+
+        <div class="kandidaten-grid">
+            <div class="kandidaat-card fade-in">
+                <div class="kandidaat-photo">👨‍💼</div>
+                <div class="kandidaat-info">
+                    <span class="kandidaat-nummer">KANDIDAAT #1</span>
+                    <h3>Piet Franssen</h3>
+                    <div class="kandidaat-functie">Lijsttrekker</div>
+                    <p>Text... korte bio van kandidaat</p>
+                </div>
+            </div>
+
+            <div class="kandidaat-card fade-in">
+                <div class="kandidaat-photo">👩‍⚕️</div>
+                <div class="kandidaat-info">
+                    <span class="kandidaat-nummer">KANDIDAAT #2</span>
+                    <h3>Maria</h3>
+                    <div class="kandidaat-functie">Specialist Zorg & Welzijn</div>
+                    <p>Text... korte bio van kandidaat</p>
+                </div>
+            </div>
+
+            <div class="kandidaat-card fade-in">
+                <div class="kandidaat-photo">👨‍🏫</div>
+                <div class="kandidaat-info">
+                    <span class="kandidaat-nummer">KANDIDAAT #3</span>
+                    <h3>Quinn</h3>
+                    <div class="kandidaat-functie">Specialist Onderwijs</div>
+                    <p>Text... korte bio van kandidaat</p>
+                </div>
+            </div>
+
+            <div class="kandidaat-card fade-in">
+                <div class="kandidaat-photo">👩‍💼</div>
+                <div class="kandidaat-info">
+                    <span class="kandidaat-nummer">KANDIDAAT #4</span>
+                    <h3>Sophie de Vries</h3>
+                    <div class="kandidaat-functie">Specialist Duurzaamheid</div>
+                    <p>Milieukundige met een missie: Rotterdam moet de groenste havenstad van Europa worden. De toekomst is groen, en die toekomst begint nu.</p>
+                </div>
+            </div>
+
+            <div class="kandidaat-card fade-in">
+                <div class="kandidaat-photo">👨‍🔧</div>
+                <div class="kandidaat-info">
+                    <span class="kandidaat-nummer">KANDIDAAT #5</span>
+                    <h3>Peter Jansen</h3>
+                    <div class="kandidaat-functie">Specialist Mobiliteit</div>
+                    <p>Verkeersingenieur en fietser in hart en nieren. Ik werk aan een Rotterdam waar iedereen veilig en comfortabel van A naar B komt.</p>
+                </div>
+            </div>
+
+            <div class="kandidaat-card fade-in">
+                <div class="kandidaat-photo">👩‍💻</div>
+                <div class="kandidaat-info">
+                    <span class="kandidaat-nummer">KANDIDAAT #6</span>
+                    <h3>Lisa Chen</h3>
+                    <div class="kandidaat-functie">Specialist Economie</div>
+                    <p>Ondernemer en econoom. Rotterdam heeft een bloeiende economie nodig waar kleine bedrijven en startups kansen krijgen om te groeien.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-logo">FRACTIE FRANSSEN</div>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                Samen maken we Gulpen beter
+            </p>
+            <div class="footer-links">
+                <a href="mailto:info@fractiefranssen.nl">info@fractiefranssen.nl</a>
+                <a href="tel:+31102345678">010 - 234 56 78</a>
+                <a href="#">Privacy</a>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+            </div>
+            <div class="copyright">
+                © 2026 Fractie Franssen. Alle rechten voorbehouden.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Typing animation
+        const typedTextElement = document.querySelector('.typed-text');
+        const phrases = [
+            'Voor een beter Gulpen-Wittem',
+            'Voor betaalbare woningen',
+            'Voor het behoud van cultuur',
+            'Voor de lokale verenigingen',
+            'Voor iedereen'
+        ];
+        
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                typedTextElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 50;
+            } else {
+                typedTextElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 100;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                // Pause at end of phrase
+                typingSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typingSpeed = 500;
+            }
+
+            setTimeout(type, typingSpeed);
+        }
+
+        // Start typing animation after page loads
+        setTimeout(type, 1000);
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
