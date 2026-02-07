@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fractie Franssen - Voor een beter Gulpen-Wittem</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Fractie Franssen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #000000;
+            --secondary: #1a1a1a;
             --accent: #FFD700;
-            --light: #f5f5f5;
-            --dark: #1a1a1a;
-            --cream: #ffffff;
+            --accent-light: #FFED4E;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --border: #e0e0e0;
         }
 
         * {
@@ -21,83 +25,154 @@
         }
 
         body {
-            font-family: 'Crimson Pro', serif;
-            color: var(--dark);
-            background: var(--cream);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgb(255, 255, 255);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 20px rgba(255, 255, 255, 0.139);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            }
+
+            .ff-logo {
+            height: 60px;   
+            width: auto;
+            }
+
+        
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-light);
         }
 
         /* Hero Section */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, var(--primary) 0%, #2a2a2a 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             position: relative;
             display: flex;
             align-items: center;
-            justify-content: center;
+            padding-top: 80px;
             overflow: hidden;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
-            animation: float 20s ease-in-out infinite;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(196, 155, 99, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(196, 155, 99, 0.1) 0%, transparent 50%);
+            animation: heroGlow 15s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(-50px, -30px) rotate(5deg); }
+        @keyframes heroGlow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
         }
 
         .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
             position: relative;
             z-index: 2;
-            text-align: center;
-            padding: 2rem;
-            max-width: 1200px;
-            animation: fadeInUp 1s ease-out;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
-        .hero h1 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3rem, 12vw, 8rem);
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             color: white;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-            line-height: 0.9;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
         }
 
-        .hero-subtitle {
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            color: var(--accent);
+        .hero-text .tagline {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            color: var(--accent-light);
             font-weight: 600;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.2s backwards;
-            min-height: 80px;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            min-height: 50px;
             display: flex;
             align-items: center;
-            justify-content: center;
-        }
-
-        .typed-container {
-            display: inline-block;
         }
 
         .typed-static {
@@ -107,6 +182,8 @@
         .typed-text {
             border-right: 3px solid var(--accent);
             padding-right: 8px;
+            padding-left: 20 px;
+            margin-left: 0.5rem;
             animation: blink 0.8s step-end infinite;
         }
 
@@ -114,129 +191,163 @@
             50% { border-color: transparent; }
         }
 
-        .hero-tagline {
-            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            line-height: 1.6;
-            animation: fadeInUp 1s ease-out 0.4s backwards;
+        .hero-text p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            max-width: 600px;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 1.2rem 3rem;
-            background: var(--accent);
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
-            animation: fadeInUp 1s ease-out 0.6s backwards;
-            letter-spacing: 0.05em;
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
-            background: #ffed4e;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.95);
+        .stat-item {
+            text-align: left;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1.5rem 0;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
         }
 
-        nav ul {
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        .cta-group {
             display: flex;
-            justify-content: center;
-            gap: 3rem;
-            list-style: none;
+            gap: 1.5rem;
             flex-wrap: wrap;
         }
 
-        nav a {
-            color: white;
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-            letter-spacing: 0.05em;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        nav a:hover {
-            color: var(--accent);
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 20px rgba(196, 155, 99, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(196, 155, 99, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            background: rgba(196, 155, 99, 0.1);
+        }
+
+        .hero-image {
+    position: relative;
+}
+
+        .hero-image img {
+            width: 100%;
+            max-height: 600px;
+            object-fit: scale-down;
+            border-radius: 16px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+        }
+
+        
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(0, 0, 0, 0.25),
+                rgba(0, 0, 0, 0)
+            );
+            border-radius: 16px;
+            pointer-events: none;
         }
 
         /* Section Styles */
         section {
             padding: 6rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
 
         .section-header h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            color: var(--primary);
-            letter-spacing: 0.08em;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--text-dark);
             margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
+            font-weight: 700;
         }
 
         .section-header p {
-            font-size: 1.3rem;
-            color: #666;
-            max-width: 700px;
-            margin: 2rem auto 0;
-            line-height: 1.7;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
         }
 
         /* Standpunten Grid */
         .standpunten-grid {
+            max-width: 1400px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
         }
 
         .standpunt-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 2.5rem;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border-left: 5px solid var(--accent);
+            cursor: pointer;
             position: relative;
             overflow: hidden;
-            cursor: pointer;
         }
 
         .standpunt-card::before {
@@ -244,59 +355,77 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 4px;
             height: 100%;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.4s;
+            background: var(--accent);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
         }
 
         .standpunt-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+            border-color: var(--accent-light);
         }
 
         .standpunt-card:hover::before {
-            opacity: 1;
+            transform: scaleY(1);
         }
 
-        .standpunt-icon {
-            font-size: 2.5rem;
+        .standpunt-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
             margin-bottom: 1.5rem;
-            display: block;
+        }
+
+        .standpunt-icon-box {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(196, 155, 99, 0.2);
+        }
+
+        .standpunt-icon-box svg {
+            width: 30px;
+            height: 30px;
+            stroke: white;
+            fill: none;
+            stroke-width: 2;
         }
 
         .standpunt-card h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            letter-spacing: 0.05em;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
         }
 
         .standpunt-card p {
-            font-size: 1.1rem;
+            color: var(--text-light);
             line-height: 1.7;
-            color: #444;
+            margin-bottom: 1.5rem;
         }
 
         .read-more {
-            display: inline-block;
-            margin-top: 1rem;
-            color: var(--primary);
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.3s;
-        }
-
-        .read-more::after {
-            content: ' →';
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             color: var(--accent);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: gap 0.3s;
         }
 
         .standpunt-card:hover .read-more {
-            color: var(--accent);
+            gap: 1rem;
         }
 
         /* Modal */
@@ -308,13 +437,10 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background: rgba(26, 35, 50, 0.9);
+            backdrop-filter: blur(10px);
             animation: fadeIn 0.3s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            padding: 2rem;
         }
 
         .modal.active {
@@ -324,16 +450,20 @@
         }
 
         .modal-content {
-            background-color: white;
-            padding: 3rem;
-            border-radius: 16px;
-            max-width: 700px;
-            width: 90%;
-            max-height: 80vh;
+            background: white;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 85vh;
             overflow-y: auto;
             position: relative;
             animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @keyframes slideUp {
@@ -347,113 +477,133 @@
             }
         }
 
+        .modal-header {
+            padding: 3rem 3rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            position: relative;
+        }
+
         .modal-close {
             position: absolute;
             top: 1.5rem;
             right: 1.5rem;
-            font-size: 2rem;
-            font-weight: bold;
-            color: #999;
-            cursor: pointer;
-            transition: color 0.3s;
-            background: none;
-            border: none;
             width: 40px;
             height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
         }
 
         .modal-close:hover {
-            color: var(--primary);
-            background: var(--light);
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
         }
 
-        .modal-header {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 3px solid var(--accent);
+        .modal-icon-box {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
         }
 
-        .modal-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
+        .modal-icon-box svg {
+            width: 40px;
+            height: 40px;
+            stroke: white;
+            fill: none;
+            stroke-width: 2;
         }
 
         .modal-title {
-            font-family: 'Bebas Neue', sans-serif;
+            font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
-            color: var(--primary);
-            letter-spacing: 0.05em;
             margin: 0;
+            font-weight: 700;
         }
 
         .modal-body {
-            color: #333;
+            padding: 3rem;
+            color: var(--text-dark);
             line-height: 1.8;
-            font-size: 1.1rem;
         }
 
         .modal-body h4 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            letter-spacing: 0.05em;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin: 2rem 0 1rem;
+            font-weight: 700;
         }
 
         .modal-body ul {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
+            list-style: none;
+            margin: 1.5rem 0;
         }
 
         .modal-body li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .modal-body li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
         }
 
         .modal-body strong {
             color: var(--primary);
+            font-weight: 600;
         }
 
-        /* Candidates Section */
+        /* Kandidaten Section */
         #kandidaten {
-            background: linear-gradient(to bottom, var(--cream) 0%, var(--light) 100%);
+            background: var(--bg-light);
         }
 
         .kandidaten-grid {
+            max-width: 1400px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
         }
 
         .kandidaat-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
             transition: all 0.4s ease;
-            position: relative;
         }
 
         .kandidaat-card:hover {
-            transform: translateY(-8px) rotate(-1deg);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
         }
 
         .kandidaat-photo {
             width: 100%;
-            height: 320px;
-            background: linear-gradient(135deg, var(--primary) 0%, #3a3a3a 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            color: white;
+            height: 350px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -461,97 +611,129 @@
         .kandidaat-photo::before {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 30% 50%, rgba(255, 215, 0, 0.2) 0%, transparent 50%);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 30% 50%, rgba(196, 155, 99, 0.2) 0%, transparent 50%);
+        }
+
+        .kandidaat-initials {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.2);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .kandidaat-nummer-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
         }
 
         .kandidaat-info {
             padding: 2rem;
         }
 
-        .kandidaat-nummer {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--primary);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            letter-spacing: 0.05em;
-        }
-
         .kandidaat-info h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--text-dark);
             margin-bottom: 0.5rem;
-            letter-spacing: 0.05em;
+            font-weight: 700;
         }
 
         .kandidaat-functie {
-            font-size: 1.1rem;
-            color: #666;
+            color: var(--accent);
             font-weight: 600;
+            font-size: 0.95rem;
             margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .kandidaat-info p {
-            font-size: 1.05rem;
+            color: var(--text-light);
             line-height: 1.7;
-            color: #555;
         }
 
         /* Footer */
         footer {
-            background: var(--dark);
+            background: var(--primary);
             color: white;
-            text-align: center;
             padding: 4rem 2rem 2rem;
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
         }
 
-        .footer-logo {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
+        .footer-about h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
-            letter-spacing: 0.1em;
-            color: var(--accent);
+            color: var(--accent-light);
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section h4 {
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
         }
 
         .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
         }
 
         .footer-links a {
-            color: var(--light);
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            font-size: 1.1rem;
             transition: color 0.3s;
+            font-size: 0.95rem;
         }
 
         .footer-links a:hover {
-            color: var(--accent);
+            color: var(--accent-light);
         }
 
-        .copyright {
-            margin-top: 3rem;
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
             color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
         }
 
-        /* Scroll animations */
+        /* Scroll Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -563,14 +745,125 @@
             transform: translateY(0);
         }
 
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 1.5rem;
-                padding: 0 1rem;
+        /* Achievement Cards */
+        .achievement-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .achievement-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .achievement-icon svg {
+            stroke: var(--primary);
+        }
+
+        .achievement-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 700;
+        }
+
+        .achievement-card p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+        }
+
+        /* Reason Cards */
+        .reason-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reason-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+            border-color: var(--accent);
+        }
+
+        .reason-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .reason-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            opacity: 0.3;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .reason-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .reason-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
             }
 
-            section {
-                padding: 4rem 1.5rem;
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
             }
 
             .standpunten-grid,
@@ -579,102 +872,327 @@
             }
 
             .modal-content {
-                padding: 2rem;
-                width: 95%;
+                margin: 1rem;
             }
 
-            .modal-title {
-                font-size: 2rem;
+            .modal-header,
+            .modal-body {
+                padding: 2rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#standpunten">Standpunten</a></li>
-            <li><a href="#kandidaten">Kandidaten</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="assets/Logo Black FF.png" alt="FF Logo" class="ff-logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#resultaten">Resultaten</a></li>
+                <li><a href="#standpunten">Standpunten</a></li>
+                <li><a href="#kandidaten">Kandidaten</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
     <section id="home" class="hero">
+        <div class="hero-pattern"></div>
         <div class="hero-content">
-            <h1>FRACTIE<br>FRANSSEN</h1>
-            <div class="hero-subtitle">
-                <span class="typed-container">
-                    <span class="typed-static">Voor </span><span class="typed-text"></span>
-                </span>
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <h1>D'r vilt dit joar echt get te keeze in Gulpen-Wittem!</h1>
+                    <p class="tagline">
+                        <span class="typed-static">Vur </span><span class="typed-text"></span>
+                    </p>
+                    <p>
+                        Sinds onze oprichting staan we voor duidelijke keuzes en daadkracht. 
+                        We zetten ons in voor het behoud van lokale cultuur, tradities en de 
+                        waarden die Gulpen-Wittem zo bijzonder maken.
+                    </p>
+                    <div class="cta-group">
+                        <a href="#standpunten" class="btn btn-primary">
+                            Onze visie
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                        <a href="#kandidaten" class="btn btn-secondary">Onze kandidaten</a>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                <img src="assets/poster.png" alt="Hero afbeelding">
+                </div>
             </div>
-            <p class="hero-tagline">
-                Samen bouwen we aan een sterke, sociale en leefbare gemeente waar iedereen telt en iedereen meetelt.
+        </div>
+    </section>
+
+    <section id="resultaten" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white;">
+        <div class="section-header fade-in" style="color: white;">
+            <div class="section-label" style="color: var(--accent);">Onze Prestaties</div>
+            <h2 style="color: white;">Dit hebben we bereikt</h2>
+            <p style="color: rgba(255, 255, 255, 0.85);">
+                Als coalitieпартner en met een wethouder in het college hebben we de afgelopen periode 
+                concrete resultaten behaald voor Gulpen-Wittem.
             </p>
-            <a href="#standpunten" class="cta-button">Ontdek onze visie</a>
+        </div>
+
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+            
+
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">
+                        <svg viewBox="0 0 24 24" width="40" height="40" stroke="currentColor" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    </div>
+                    <h3>Meer sociale woningen</h3>
+                    <p>Concrete plannen voor betaalbare woningbouw in meerdere kernen, met extra aandacht voor starters en senioren.</p>
+                </div>
+
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">
+                        <svg viewBox="0 0 24 24" width="40" height="40" stroke="currentColor" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <h3>Verenigingen gesteund</h3>
+                    <p>Structurele ondersteuning voor lokale verenigingen en cultuurinitiatieven. Extra subsidies voor carnaval, schutterijen en muziekverenigingen.</p>
+                </div>
+
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">
+                        <svg viewBox="0 0 24 24" width="40" height="40" stroke="currentColor" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                    <h3>Verkeersveiligheid verbeterd</h3>
+                    <p>30 km zones ingevoerd in woonwijken en veilige schoolroutes aangelegd voor onze kinderen.</p>
+                </div>
+
+
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">
+                        <svg viewBox="0 0 24 24" width="40" height="40" stroke="currentColor" fill="none" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    </div>
+                    <h3>Lokale economie versterkt</h3>
+                    <p>Ondersteuning voor MKB en horecaondernemers, vooral tijdens en na coronaperiode.</p>
+                </div>
+            </div>
+
+            <div class="stats-showcase fade-in" style="background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 3rem; margin-top: 3rem; border: 1px solid rgba(255, 215, 0, 0.3);">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; text-align: center; margin-bottom: 3rem; color: var(--accent);">In cijfers</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+                    <div>
+                        <div style="font-size: 3rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem;">5</div>
+                        <div style="color: rgba(255, 255, 255, 0.9); font-weight: 500;">Zetels in de raad</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 3rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem;">1</div>
+                        <div style="color: rgba(255, 255, 255, 0.9); font-weight: 500;">Wethouder in college</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 3rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem;">20+</div>
+                        <div style="color: rgba(255, 255, 255, 0.9); font-weight: 500;">Jaar actief</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 3rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem;">100%</div>
+                        <div style="color: rgba(255, 255, 255, 0.9); font-weight: 500;">Inzet voor onze gemeente</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="waarom-stemmen" style="background: var(--bg-light);">
+        <div class="section-header fade-in">
+            <div class="section-label">Waarom Fractie Franssen?</div>
+            <h2>Duidelijke keuzes, daadkrachtig handelen</h2>
+            <p>
+                Dit maakt ons anders en dit is waarom u op 18 maart 2026 op ons moet stemmen.
+            </p>
+        </div>
+
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem;">
+            <div class="reason-card fade-in">
+                <div class="reason-number">01</div>
+                <h3>Ervaring die telt</h3>
+                <p>Meer dan 20 jaar ervaring in de gemeenteraad. We kennen de gemeente en haar inwoners door en door.</p>
+            </div>
+
+            <div class="reason-card fade-in">
+                <div class="reason-number">02</div>
+                <h3>Bewezen resultaten</h3>
+                <p>Als coalitiepartner met een wethouder hebben we concreet resultaat geboekt voor Gulpen-Wittem.</p>
+            </div>
+
+            <div class="reason-card fade-in">
+                <div class="reason-number">03</div>
+                <h3>Cultuur & tradities</h3>
+                <p>Wij staan voor het behoud van wat onze gemeente bijzonder maakt: onze cultuur, tradities en verenigingsleven.</p>
+            </div>
+
+            <div class="reason-card fade-in">
+                <div class="reason-number">04</div>
+                <h3>Politiek met een rechte rug</h3>
+                <p>Wij durven duidelijke standpunten in te nemen en staan voor onze principes, ook als dat niet populair is.</p>
+            </div>
+
+            <div class="reason-card fade-in">
+                <div class="reason-number">05</div>
+                <h3>Luisteren naar inwoners</h3>
+                <p>We zijn bereikbaar, benaderbaar en nemen de zorgen van inwoners serieus. Uw stem is onze richting.</p>
+            </div>
+
+            <div class="reason-card fade-in">
+                <div class="reason-number">06</div>
+                <h3>Lokaal geankerd</h3>
+                <p>Geboren en getogen in Gulpen-Wittem. We leven hier, werken hier en kennen de uitdagingen van binnenuit.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="#kandidaten" class="btn btn-primary">Ontmoet onze kandidaten</a>
         </div>
     </section>
 
     <section id="standpunten">
         <div class="section-header fade-in">
-            <h2>Onze Standpunten</h2>
-            <p>Dit zijn de kernpunten waar Fractie Franssen voor staat. Klik op een standpunt voor meer informatie.</p>
+            <div class="section-label">Onze Prioriteiten</div>
+            <h2>Waar wij voor staan</h2>
+            <p>
+                Deze kernpunten vormen de basis van ons verkiezingsprogramma. 
+                Klik op een onderwerp voor meer informatie over onze concrete plannen.
+            </p>
         </div>
 
         <div class="standpunten-grid">
             <div class="standpunt-card fade-in" data-modal="woningen">
-                <span class="standpunt-icon">🏘️</span>
-                <h3>Betaalbare Woningen</h3>
-                <p>Iedereen heeft recht op een betaalbare woning. We zetten in op sociale woningbouw en betaalbare huurprijzen.</p>
-                <span class="read-more">Lees meer</span>
+                <div class="standpunt-header">
+                    <div class="standpunt-icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    </div>
+                    <div>
+                        <h3>Betaalbare Woningen</h3>
+                    </div>
+                </div>
+                <p>Iedereen heeft recht op een betaalbare, veilige woning. We investeren in sociale woningbouw en houden huurprijzen onder controle.</p>
+                <a href="#" class="read-more">
+                    Lees meer
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
             </div>
 
             <div class="standpunt-card fade-in" data-modal="groen">
-                <span class="standpunt-icon">🌳</span>
-                <h3>Groene Gemeente</h3>
-                <p>Meer groen in de wijken, duurzame energie en bescherming van onze natuur.</p>
-                <span class="read-more">Lees meer</span>
+                <div class="standpunt-header">
+                    <div class="standpunt-icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <div>
+                        <h3>Leefbare Dorpen</h3>
+                    </div>
+                </div>
+                <p>Investeren in groen, veilige wijken en behoud van onze natuurgebieden voor toekomstige generaties.</p>
+                <a href="#" class="read-more">
+                    Lees meer
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
             </div>
 
             <div class="standpunt-card fade-in" data-modal="onderwijs">
-                <span class="standpunt-icon">🎓</span>
-                <h3>Onderwijs & Jeugd</h3>
-                <p>Investeren in goed onderwijs en veilige plekken voor onze kinderen.</p>
-                <span class="read-more">Lees meer</span>
+                <div class="standpunt-header">
+                    <div class="standpunt-icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                    </div>
+                    <div>
+                        <h3>Onderwijs & Jeugd</h3>
+                    </div>
+                </div>
+                <p>Kwaliteit onderwijs en veilige, moderne faciliteiten voor al onze kinderen en jongeren.</p>
+                <a href="#" class="read-more">
+                    Lees meer
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
             </div>
 
             <div class="standpunt-card fade-in" data-modal="verkeer">
-                <span class="standpunt-icon">🚲</span>
-                <h3>Verkeer & Mobiliteit</h3>
-                <p>Veilige fietspaden, goed openbaar vervoer en bereikbaarheid voor iedereen.</p>
-                <span class="read-more">Lees meer</span>
+                <div class="standpunt-header">
+                    <div class="standpunt-icon-box">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                    <div>
+                        <h3>Mobiliteit & Bereikbaarheid</h3>
+                    </div>
+                </div>
+                <p>Veilige wegen, goede fietspaden en betrouwbaar openbaar vervoer voor alle inwoners.</p>
+                <a href="#" class="read-more">
+                    Lees meer
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
             </div>
 
             <div class="standpunt-card fade-in" data-modal="economie">
-                <span class="standpunt-icon">💼</span>
-                <h3>Werk & Economie</h3>
-                <p>Steun voor lokale ondernemers en werkgelegenheid voor iedereen.</p>
-                <span class="read-more">Lees meer</span>
-            </div>
-
-            <div class="standpunt-card fade-in" data-modal="cohesie">
-                <span class="standpunt-icon">🤝</span>
-                <h3>Sociale Cohesie</h3>
-                <p>Een gemeente waar we naar elkaar omkijken en samen sterk zijn.</p>
-                <span class="read-more">Lees meer</span>
-            </div>
-
-            <div class="standpunt-card fade-in" data-modal="zorg">
-                <span class="standpunt-icon">🏥</span>
-                <h3>Zorg & Welzijn</h3>
-                <p>Toegankelijke zorg voor iedereen, extra aandacht voor ouderen.</p>
-                <span class="read-more">Lees meer</span>
+                <div class="standpunt-header">
+                    <div class="standpunt-icon-box">
+                        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    </div>
+                    <div>
+                        <h3>Lokale Economie</h3>
+                    </div>
+                </div>
+                <p>Steun voor ondernemers, werkgelegenheid en een bloeiend lokaal bedrijfsleven.</p>
+                <a href="#" class="read-more">
+                    Lees meer
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
             </div>
 
             <div class="standpunt-card fade-in" data-modal="cultuur">
-                <span class="standpunt-icon">🎨</span>
-                <h3>Cultuur & Verenigingen</h3>
-                <p>Ruimte voor kunst, cultuur en lokale verenigingen die onze gemeenschap versterken.</p>
-                <span class="read-more">Lees meer</span>
+                <div class="standpunt-header">
+                    <div class="standpunt-icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <div>
+                        <h3>Cultuur & Tradities</h3>
+                    </div>
+                </div>
+                <p>Behoud en versterking van lokale cultuur, tradities en verenigingsleven die onze gemeenschap definiëren.</p>
+                <a href="#" class="read-more">
+                    Lees meer
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+            </div>
+
+            <div class="standpunt-card fade-in" data-modal="zorg">
+                <div class="standpunt-header">
+                    <div class="standpunt-icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                    </div>
+                    <div>
+                        <h3>Zorg & Welzijn</h3>
+                    </div>
+                </div>
+                <p>Toegankelijke, betaalbare zorg voor iedereen met extra aandacht voor ouderen en kwetsbaren.</p>
+                <a href="#" class="read-more">
+                    Lees meer
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+            </div>
+
+            <div class="standpunt-card fade-in" data-modal="recreatie">
+                <div class="standpunt-header">
+                    <div class="standpunt-icon-box">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6m0 6v6m5.2-14.2l-4.2 4.2m0 0l-4.2-4.2m8.4 8.4l-4.2-4.2m0 0l-4.2 4.2M23 12h-6m-6 0H5"></path></svg>
+                    </div>
+                    <div>
+                        <h3>Recreatie & Toerisme</h3>
+                    </div>
+                </div>
+                <p>Zwemwater behouden, toerisme stimuleren en investeren in recreatieve voorzieningen zoals Mosaqua.</p>
+                <a href="#" class="read-more">
+                    Lees meer
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
             </div>
         </div>
     </section>
@@ -682,268 +1200,300 @@
     <!-- Modals -->
     <div id="modal-woningen" class="modal">
         <div class="modal-content">
-            <button class="modal-close">&times;</button>
             <div class="modal-header">
-                <span class="modal-icon">🏘️</span>
+                <button class="modal-close">&times;</button>
+                <div class="modal-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                </div>
                 <h2 class="modal-title">Betaalbare Woningen</h2>
             </div>
             <div class="modal-body">
-                <p>Wonen is een grondrecht. Iedereen moet kunnen rekenen op een betaalbare, veilige en fatsoenlijke woning. Helaas zien we dat dit in onze gemeente steeds moeilijker wordt.</p>
+                <p>Wonen is een grondrecht. Iedereen in onze gemeente moet kunnen rekenen op een betaalbare, veilige en kwalitatief goede woning. We zien echter dat dit voor steeds meer mensen een probleem wordt.</p>
                 
-                <h4>Onze concrete plannen:</h4>
+                <h4>Onze concrete plannen</h4>
                 <ul>
-                    <li><strong>Meer sociale huurwoningen:</strong> We bouwen minimaal 100 nieuwe betaalbare huurwoningen per jaar, speciaal voor starters, gezinnen en ouderen.</li>
-                    <li><strong>Huurprijzen onder controle:</strong> We koppelen de maximale huurprijs aan het lokale inkomen, zodat niemand meer dan 30% van zijn salaris aan huur kwijt is.</li>
-                    <li><strong>Leegstand aanpakken:</strong> Leegstaande panden worden omgebouwd tot betaalbare woningen. We hanteren een streng leegstandsbeleid.</li>
-                    <li><strong>Startersleningen:</strong> Jongeren krijgen voorrang en extra ondersteuning bij het kopen van hun eerste woning.</li>
-                    <li><strong>Duurzaam bouwen:</strong> Alle nieuwe woningen zijn energieneutraal, wat de woonlasten verlaagt.</li>
+                    <li><strong>Meer sociale huurwoningen:</strong> Jaarlijks minimaal 100 nieuwe betaalbare huurwoningen realiseren, speciaal gericht op starters, jonge gezinnen en senioren.</li>
+                    <li><strong>Huurprijzen reguleren:</strong> Maximale huurprijs koppelen aan lokaal inkomen, zodat niemand meer dan 30% van hun salaris kwijt is aan woonlasten.</li>
+                    <li><strong>Leegstand bestrijden:</strong> Streng leegstandsbeleid invoeren en leegstaande panden omzetten naar betaalbare woningen.</li>
+                    <li><strong>Startersleningen uitbreiden:</strong> Extra ondersteuning en voorrang voor jongeren bij het kopen van hun eerste woning.</li>
+                    <li><strong>Duurzaam bouwen:</strong> Alle nieuwbouw moet energieneutraal zijn om woonlasten structureel te verlagen.</li>
                 </ul>
 
-                <h4>Waarom is dit belangrijk?</h4>
-                <p>Een veilige, betaalbare woning is de basis voor alles. Zonder goed wonen kan je niet goed werken, studeren of een gezin stichten. We investeren in woningen omdat we investeren in de toekomst van onze inwoners.</p>
+                <h4>Waarom is dit zo belangrijk?</h4>
+                <p>Een goede woning is de basis voor een stabiel leven. Zonder betaalbaar wonen kunnen mensen niet goed werken, studeren of een gezin stichten. Door te investeren in woningen investeren we in de toekomst van al onze inwoners en de stabiliteit van onze gemeenschap.</p>
             </div>
         </div>
     </div>
 
     <div id="modal-groen" class="modal">
         <div class="modal-content">
-            <button class="modal-close">&times;</button>
             <div class="modal-header">
-                <span class="modal-icon">🌳</span>
-                <h2 class="modal-title">Groene Gemeente</h2>
+                <button class="modal-close">&times;</button>
+                <div class="modal-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <h2 class="modal-title">Leefbare Dorpen</h2>
             </div>
             <div class="modal-body">
-                <p>Onze gemeente moet een groene, gezonde plek zijn om te wonen. Meer bomen, parken en duurzame energie zorgen voor een betere leefomgeving voor iedereen.</p>
+                <p>Onze dorpen moeten groene, gezonde plekken blijven om te wonen. Door te investeren in groen, natuurbehoud en duurzaamheid zorgen we voor een betere leefomgeving voor huidige en toekomstige generaties.</p>
                 
-                <h4>Onze concrete plannen:</h4>
+                <h4>Onze concrete plannen</h4>
                 <ul>
-                    <li><strong>1000 nieuwe bomen:</strong> We planten de komende 4 jaar 1000 extra bomen in onze wijken voor koelte, biodiversiteit en schone lucht.</li>
-                    <li><strong>Bescherming natuurgebieden:</strong> Geen nieuwe bebouwing in beschermde natuurgebieden. Bestaande natuur wordt actief beheerd en uitgebreid.</li>
-                    <li><strong>Zonnepanelen voor iedereen:</strong> Subsidie voor zonnepanelen op elk huis en alle gemeentelijke gebouwen krijgen zonnepanelen.</li>
-                    <li><strong>Groene schoolpleinen:</strong> Alle schoolpleinen worden vergroend met bomen, struiken en natuurlijke speelplekken.</li>
-                    <li><strong>Plastic-vrije gemeente:</strong> We stimuleren bedrijven om plastic te verminderen en organiseren jaarlijks opruimacties.</li>
+                    <li><strong>1000 nieuwe bomen:</strong> In de komende raadsperiode 1000 extra bomen planten in onze dorpen voor verkoeling, biodiversiteit en luchtkwaliteit.</li>
+                    <li><strong>Natuurgebieden beschermen:</strong> Geen nieuwe bebouwing in beschermde gebieden en actief beheer van bestaande natuur.</li>
+                    <li><strong>Groen in wijken:</strong> Meer groene speelplekken, parkjes en bomenrijen in woonwijken.</li>
+                    <li><strong>Duurzame energie stimuleren:</strong> Subsidies voor zonnepanelen en andere vormen van duurzame energie op woningen en bedrijven.</li>
+                    <li><strong>Afval reduceren:</strong> Programma's om plastic gebruik te verminderen en circulaire economie te bevorderen.</li>
                 </ul>
 
-                <h4>Waarom is dit belangrijk?</h4>
-                <p>Klimaatverandering is real. We moeten nu handelen om onze gemeente leefbaar te houden voor onze kinderen en kleinkinderen. Groen is niet alleen mooi, het is noodzakelijk voor onze gezondheid en toekomst.</p>
+                <h4>Waarom is dit zo belangrijk?</h4>
+                <p>We hebben maar één aarde en onze natuurlijke omgeving is de basis van ons bestaan. Door nu te investeren in groen en duurzaamheid zorgen we ervoor dat Gulpen-Wittem leefbaar blijft en dat we een mooie gemeente doorgeven aan de volgende generaties.</p>
             </div>
         </div>
     </div>
 
     <div id="modal-onderwijs" class="modal">
         <div class="modal-content">
-            <button class="modal-close">&times;</button>
             <div class="modal-header">
-                <span class="modal-icon">🎓</span>
+                <button class="modal-close">&times;</button>
+                <div class="modal-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                </div>
                 <h2 class="modal-title">Onderwijs & Jeugd</h2>
             </div>
             <div class="modal-body">
-                <p>Onze kinderen verdienen het beste. Goed onderwijs is de sleutel tot een succesvolle toekomst en een sterke samenleving.</p>
+                <p>Onze kinderen en jongeren verdienen het beste onderwijs en de beste kansen. Goed onderwijs is de sleutel tot een succesvolle toekomst, zowel voor het individu als voor onze gemeenschap.</p>
                 
-                <h4>Onze concrete plannen:</h4>
+                <h4>Onze concrete plannen</h4>
                 <ul>
-                    <li><strong>Kleinere klassen:</strong> Maximaal 20 leerlingen per klas in het basisonderwijs voor meer persoonlijke aandacht.</li>
-                    <li><strong>Moderne schoolgebouwen:</strong> Renovatie van verouderde scholen en investering in moderne faciliteiten zoals makers-spaces en sportfaciliteiten.</li>
-                    <li><strong>Extra ondersteuning:</strong> Meer geld voor extra begeleiding van kinderen die het nodig hebben, van hoogbegaafdheid tot leerproblemen.</li>
-                    <li><strong>Veilige routes naar school:</strong> Alle routes naar scholen worden voorzien van veilige oversteekplaatsen, zebrapaden en goede verlichting.</li>
-                    <li><strong>Gratis sportactiviteiten:</strong> Elk kind kan gratis sporten bij minimaal één lokale sportvereniging.</li>
+                    <li><strong>Kleinere klassen:</strong> Maximaal 20 leerlingen per klas in het basisonderwijs voor meer persoonlijke aandacht en begeleiding.</li>
+                    <li><strong>Moderne faciliteiten:</strong> Renovatie van verouderde scholen en investering in moderne voorzieningen zoals ICT en sportfaciliteiten.</li>
+                    <li><strong>Extra ondersteuning:</strong> Meer budget voor begeleiding van kinderen die extra hulp nodig hebben, van hoogbegaafdheid tot leerproblemen.</li>
+                    <li><strong>Veilige schoolroutes:</strong> Alle routes naar school voorzien van veilige oversteekplaatsen, zebrapaden en goede verlichting.</li>
+                    <li><strong>Jeugdactiviteiten:</strong> Steun voor jeugdverenigingen, sportclubs en culturele activiteiten voor jongeren.</li>
                 </ul>
 
-                <h4>Waarom is dit belangrijk?</h4>
-                <p>Investeren in onderwijs is investeren in de toekomst. Goed onderwijs biedt kansen, vergroot talenten en zorgt voor een sterke, sociale gemeenschap.</p>
+                <h4>Waarom is dit zo belangrijk?</h4>
+                <p>Investeren in onderwijs en jeugd is investeren in de toekomst van onze gemeente. Goed onderwijs biedt kinderen kansen, ontwikkelt talenten en zorgt voor een sterke, sociale gemeenschap waarin iedereen zich kan ontplooien.</p>
             </div>
         </div>
     </div>
 
     <div id="modal-verkeer" class="modal">
         <div class="modal-content">
-            <button class="modal-close">&times;</button>
             <div class="modal-header">
-                <span class="modal-icon">🚲</span>
-                <h2 class="modal-title">Verkeer & Mobiliteit</h2>
+                <button class="modal-close">&times;</button>
+                <div class="modal-icon-box">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <h2 class="modal-title">Mobiliteit & Bereikbaarheid</h2>
             </div>
             <div class="modal-body">
-                <p>Iedereen moet zich veilig en comfortabel kunnen verplaatsen door onze gemeente, of je nu fietst, loopt, de bus neemt of met de auto gaat.</p>
+                <p>Iedereen moet zich veilig en gemakkelijk kunnen verplaatsen door onze gemeente, of je nu fietst, loopt, de bus neemt of met de auto rijdt. Goede bereikbaarheid is essentieel voor werk, school en sociale contacten.</p>
                 
-                <h4>Onze concrete plannen:</h4>
+                <h4>Onze concrete plannen</h4>
                 <ul>
-                    <li><strong>Veilige fietspaden:</strong> Alle doorgaande wegen krijgen gescheiden, verlichte fietspaden voor veilig fietsen.</li>
-                    <li><strong>Meer busverbindingen:</strong> Uitbreiding van het openbaar vervoer met extra buslijnen en avondverbindingen.</li>
-                    <li><strong>30 km zones:</strong> Alle woonwijken worden 30 km zones voor de veiligheid van kinderen en fietsers.</li>
-                    <li><strong>Parkeerbeleid:</strong> Meer parkeerplaatsen bij het station en betaalbaar parkeren in het centrum.</li>
-                    <li><strong>Laadpalen:</strong> Overal laadpalen voor elektrische auto's en fietsen, voor een duurzame toekomst.</li>
+                    <li><strong>Veilige fietspaden:</strong> Alle doorgaande wegen voorzien van gescheiden, goed verlichte fietspaden.</li>
+                    <li><strong>Openbaar vervoer verbeteren:</strong> Meer busverbindingen en betere aansluiting op regionale knooppunten.</li>
+                    <li><strong>30 km zones:</strong> Alle woonwijken worden 30 km zones voor veiligheid van kinderen en fietsers.</li>
+                    <li><strong>Parkeeroplossingen:</strong> Voldoende parkeerplaatsen bij voorzieningen en betaalbaar parkeren in het centrum.</li>
+                    <li><strong>Laadinfrastructuur:</strong> Uitbreiding van laadpalen voor elektrische voertuigen en fietsen.</li>
                 </ul>
 
-                <h4>Waarom is dit belangrijk?</h4>
-                <p>Mobiliteit bepaalt hoe vrij we zijn om te werken, te winkelen en elkaar te bezoeken. Veilige wegen en goed openbaar vervoer maken onze gemeente toegankelijk voor iedereen.</p>
+                <h4>Waarom is dit zo belangrijk?</h4>
+                <p>Goede mobiliteit verbindt mensen met hun werk, voorzieningen en sociale contacten. Door te investeren in veilige wegen en goed openbaar vervoer maken we onze gemeente toegankelijk en leefbaar voor iedereen.</p>
             </div>
         </div>
     </div>
 
     <div id="modal-economie" class="modal">
         <div class="modal-content">
-            <button class="modal-close">&times;</button>
             <div class="modal-header">
-                <span class="modal-icon">💼</span>
-                <h2 class="modal-title">Werk & Economie</h2>
+                <button class="modal-close">&times;</button>
+                <div class="modal-icon-box">
+                    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                </div>
+                <h2 class="modal-title">Lokale Economie</h2>
             </div>
             <div class="modal-body">
-                <p>Een bloeiende lokale economie zorgt voor banen, welvaart en een levendige gemeenschap. We ondersteunen ondernemers en zorgen dat iedereen kan werken.</p>
+                <p>Een bloeiende lokale economie zorgt voor werkgelegenheid, welvaart en een levendige gemeenschap. We ondersteunen ondernemers en zorgen dat iedereen kansen heeft op de arbeidsmarkt.</p>
                 
-                <h4>Onze concrete plannen:</h4>
+                <h4>Onze concrete plannen</h4>
                 <ul>
-                    <li><strong>Steun voor MKB:</strong> Subsidies en lage huren voor startende ondernemers die zich in onze gemeente vestigen.</li>
-                    <li><strong>Winkelcentra versterken:</strong> Investeren in aantrekkelijke, levendige winkelstraten met cultuur en horeca.</li>
-                    <li><strong>Werkgelegenheid voor jongeren:</strong> Stage- en leerbanen voor scholieren en studenten bij lokale bedrijven.</li>
-                    <li><strong>Toerisme stimuleren:</strong> Promotie van onze gemeente als toeristische bestemming met lokale evenementen en attracties.</li>
-                    <li><strong>Geen leegstand:</strong> Leegstaande winkelpanden worden omgebouwd tot woningen, ateliers of gemeenschapsruimtes.</li>
+                    <li><strong>MKB ondersteunen:</strong> Subsidies en lage huren voor startende ondernemers die zich in Gulpen-Wittem vestigen.</li>
+                    <li><strong>Winkelcentra versterken:</strong> Investeren in aantrekkelijke winkelstraten met goede voorzieningen en parkeren.</li>
+                    <li><strong>Stageplekken creëren:</strong> Samenwerking tussen scholen en bedrijven voor stage- en leerwerkplekken voor jongeren.</li>
+                    <li><strong>Toerisme bevorderen:</strong> Marketing van onze gemeente als toeristische bestemming met evenementen en attracties.</li>
+                    <li><strong>Leegstand aanpakken:</strong> Creatieve herbestemming van leegstaande bedrijfspanden.</li>
                 </ul>
 
-                <h4>Waarom is dit belangrijk?</h4>
-                <p>Werk geeft mensen waardigheid, inkomen en toekomstperspectief. Een sterke lokale economie zorgt ervoor dat onze gemeente levendig blijft en iedereen kan meedoen.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-cohesie" class="modal">
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <div class="modal-header">
-                <span class="modal-icon">🤝</span>
-                <h2 class="modal-title">Sociale Cohesie</h2>
-            </div>
-            <div class="modal-body">
-                <p>Een sterke gemeenschap ontstaat door elkaar te kennen, te helpen en samen dingen te ondernemen. We investeren in plekken en initiatieven die mensen samenbrengen.</p>
-                
-                <h4>Onze concrete plannen:</h4>
-                <ul>
-                    <li><strong>Buurthuizen versterken:</strong> Meer geld voor buurtcentra waar mensen elkaar kunnen ontmoeten, cursussen volgen en activiteiten organiseren.</li>
-                    <li><strong>Vrijwilligerswerk stimuleren:</strong> Waardering en ondersteuning voor vrijwilligers met een jaarlijkse vrijwilligersdag en kleine vergoedingen.</li>
-                    <li><strong>Straatfeesten en evenementen:</strong> Subsidies voor buurtfeesten, koningsdagvieringen en lokale festivals.</li>
-                    <li><strong>Ontmoetingsplekken:</strong> Meer bankjes, picknickplaatsen en openbare ruimtes waar mensen elkaar kunnen treffen.</li>
-                    <li><strong>Samen tegen eenzaamheid:</strong> Maatjesprojecten en activiteiten speciaal voor ouderen en mensen die zich eenzaam voelen.</li>
-                </ul>
-
-                <h4>Waarom is dit belangrijk?</h4>
-                <p>Eenzaamheid is een groeiend probleem. Door te investeren in sociale cohesie zorgen we ervoor dat niemand tussen wal en schip valt en iedereen zich welkom voelt.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-zorg" class="modal">
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <div class="modal-header">
-                <span class="modal-icon">🏥</span>
-                <h2 class="modal-title">Zorg & Welzijn</h2>
-            </div>
-            <div class="modal-body">
-                <p>Goede zorg is een mensenrecht. Iedereen moet kunnen rekenen op toegankelijke, betaalbare en kwalitatieve zorg, van jong tot oud.</p>
-                
-                <h4>Onze concrete plannen:</h4>
-                <ul>
-                    <li><strong>Meer huisartsen:</strong> Werven van extra huisartsen zodat iedereen snel een afspraak kan maken en niemand weken hoeft te wachten.</li>
-                    <li><strong>Thuiszorg uitbreiden:</strong> Meer budget voor wijkverpleging en thuiszorg, zodat ouderen langer zelfstandig thuis kunnen blijven wonen.</li>
-                    <li><strong>Jeugdzorg versterken:</strong> Snellere hulp voor gezinnen en jongeren die problemen ervaren, met kortere wachtlijsten.</li>
-                    <li><strong>Mantelzorgers ondersteunen:</strong> Extra ondersteuning en respijtzorg voor mensen die voor hun naasten zorgen.</li>
-                    <li><strong>GGZ toegankelijker:</strong> Geen wachtlijsten voor acute geestelijke gezondheidszorg en meer preventieprogramma's.</li>
-                </ul>
-
-                <h4>Waarom is dit belangrijk?</h4>
-                <p>Gezondheid is alles. Zonder goede zorg kan je niet werken, leren of genieten van het leven. We zorgen ervoor dat iedereen de zorg krijgt die ze nodig hebben.</p>
+                <h4>Waarom is dit zo belangrijk?</h4>
+                <p>Werk geeft mensen inkomen, waardigheid en toekomstperspectief. Een sterke lokale economie zorgt ervoor dat onze gemeente levendig en aantrekkelijk blijft en dat jong en oud hier kunnen blijven wonen en werken.</p>
             </div>
         </div>
     </div>
 
     <div id="modal-cultuur" class="modal">
         <div class="modal-content">
-            <button class="modal-close">&times;</button>
             <div class="modal-header">
-                <span class="modal-icon">🎨</span>
-                <h2 class="modal-title">Cultuur & Verenigingen</h2>
+                <button class="modal-close">&times;</button>
+                <div class="modal-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <h2 class="modal-title">Cultuur & Tradities</h2>
             </div>
             <div class="modal-body">
-                <p>Kunst, cultuur en verenigingen maken onze gemeente levendig en geven mensen een thuis. We koesteren onze tradities en geven ruimte aan creativiteit.</p>
+                <p>Onze lokale cultuur, tradities en het verenigingsleven zijn de ziel van Gulpen-Wittem. Ze verbinden mensen, geven identiteit en maken onze gemeente uniek. Het behoud en de versterking hiervan staat centraal in ons programma.</p>
                 
-                <h4>Onze concrete plannen:</h4>
+                <h4>Onze concrete plannen</h4>
                 <ul>
-                    <li><strong>Verenigingen ondersteunen:</strong> Subsidies voor sportverenigingen, muziekverenigingen, toneelclubs en hobbyverenigingen.</li>
-                    <li><strong>Culturele evenementen:</strong> Jaarlijks budget voor lokale festivals, concerten, tentoonstellingen en theatervoorstellingen.</li>
-                    <li><strong>Ateliers en werkplaatsen:</strong> Betaalbare ruimtes voor kunstenaars, makers en creatieve ondernemers.</li>
-                    <li><strong>Gratis cultuur voor jongeren:</strong> Elk kind krijgt een cultuurtegoed om musea, theaters en concerten te bezoeken.</li>
-                    <li><strong>Historisch erfgoed:</strong> Behoud en restauratie van historische gebouwen en monumenten die onze geschiedenis vertellen.</li>
+                    <li><strong>Verenigingen ondersteunen:</strong> Structurele subsidies voor sportverenigingen, muziekverenigingen, schutterijen en andere culturele verenigingen.</li>
+                    <li><strong>Evenementen faciliteren:</strong> Ondersteuning voor lokale festivals, optochten, carnaval en andere traditiestempels.</li>
+                    <li><strong>Cultureel erfgoed behouden:</strong> Restauratie en onderhoud van historische gebouwen, kapelletjes en monumenten.</li>
+                    <li><strong>Dialectbehoud:</strong> Programma's om het Limburgs dialect levend te houden, vooral onder jongeren.</li>
+                    <li><strong>Ontmoetingsplekken:</strong> Investeren in dorpshuizen en gemeenschapscentra waar mensen samenkomen.</li>
                 </ul>
 
-                <h4>Waarom is dit belangrijk?</h4>
-                <p>Cultuur en verenigingen verbinden mensen, verrijken ons leven en geven identiteit aan onze gemeente. Door te investeren in cultuur investeren we in onze gemeenschap.</p>
+                <h4>Waarom is dit zo belangrijk?</h4>
+                <p>Onze cultuur en tradities zijn wat Gulpen-Wittem bijzonder maken. Ze zorgen voor sociale cohesie, identiteit en gemeenschapszin. Door hier in te investeren behouden we wat ons uniek maakt en geven we dit door aan volgende generaties.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-zorg" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close">&times;</button>
+                <div class="modal-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                </div>
+                <h2 class="modal-title">Zorg & Welzijn</h2>
+            </div>
+            <div class="modal-body">
+                <p>Goede zorg is een mensenrecht. Iedereen in onze gemeente moet kunnen rekenen op toegankelijke, betaalbare en kwalitatief goede zorg, ongeacht leeftijd of inkomen.</p>
+                
+                <h4>Onze concrete plannen</h4>
+                <ul>
+                    <li><strong>Huisartsenzorg versterken:</strong> Werven van extra huisartsen om wachttijden te verkorten en beschikbaarheid te garanderen.</li>
+                    <li><strong>Thuiszorg uitbreiden:</strong> Meer capaciteit voor wijkverpleging zodat ouderen langer zelfstandig thuis kunnen blijven wonen.</li>
+                    <li><strong>Jeugdzorg verbeteren:</strong> Snellere hulp voor gezinnen en jongeren met kortere wachtlijsten en meer preventie.</li>
+                    <li><strong>Mantelzorgers ondersteunen:</strong> Respijtzorg en financiële ondersteuning voor mensen die zorgen voor hun naasten.</li>
+                    <li><strong>GGZ toegankelijker:</strong> Geen wachtlijsten voor acute geestelijke gezondheidszorg en meer laagdrempelige hulp.</li>
+                </ul>
+
+                <h4>Waarom is dit zo belangrijk?</h4>
+                <p>Gezondheid is de basis voor alles. Zonder goede zorg kunnen mensen niet werken, leren of genieten van het leven. We investeren in zorg omdat we vinden dat iedereen recht heeft op een gezond en waardig leven.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-recreatie" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close">&times;</button>
+                <div class="modal-icon-box">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6m0 6v6m5.2-14.2l-4.2 4.2m0 0l-4.2-4.2m8.4 8.4l-4.2-4.2m0 0l-4.2 4.2M23 12h-6m-6 0H5"></path></svg>
+                </div>
+                <h2 class="modal-title">Recreatie & Toerisme</h2>
+            </div>
+            <div class="modal-body">
+                <p>Fractie Franssen is vanaf het eerste moment duidelijk geweest: wij zijn vóór zwemwater in Gulpen-Wittem. Mosaqua heeft groot maatschappelijk belang en leszwemmen is van levensbelang.</p>
+                
+                <h4>Onze concrete plannen</h4>
+                <ul>
+                    <li><strong>Mosaqua behouden:</strong> Zwemwater blijft beschikbaar in onze gemeente voor doelgroepzwemmen en zwemlessen.</li>
+                    <li><strong>Toerisme ontwikkelen:</strong> Investeren in wandel- en fietspaden, bewegwijzering en toeristische voorzieningen.</li>
+                    <li><strong>Evenementen faciliteren:</strong> Ondersteuning voor lokale evenementen die bezoekers naar onze gemeente trekken.</li>
+                    <li><strong>Horeca ondersteunen:</strong> Samenwerking met horecaondernemers om de gastvrijheid in onze dorpen te versterken.</li>
+                    <li><strong>Natuurrecreatie bevorderen:</strong> Toegankelijke natuurgebieden met goede faciliteiten voor wandelaars en fietsers.</li>
+                </ul>
+
+                <h4>Waarom is dit zo belangrijk?</h4>
+                <p>Recreatie en toerisme zijn belangrijk voor onze lokale economie en de leefbaarheid van onze dorpen. Zwemwater heeft bovendien groot maatschappelijk belang - leszwemmen kan levens redden. Door hier in te investeren houden we onze gemeente aantrekkelijk voor bewoners en bezoekers.</p>
             </div>
         </div>
     </div>
 
     <section id="kandidaten">
         <div class="section-header fade-in">
-            <h2>Onze Kandidaten</h2>
-            <p>Ontmoet het team van Fractie Franssen. Gedreven mensen met een hart voor de gemeente en haar inwoners.</p>
+            <div class="section-label">Ons Team</div>
+            <h2>Kandidaten 2026</h2>
+            <p>
+                Ervaren en gedreven mensen met een hart voor Gulpen-Wittem. 
+                Samen staan we voor duidelijke keuzes en daadkrachtig bestuur.
+            </p>
         </div>
 
         <div class="kandidaten-grid">
             <div class="kandidaat-card fade-in">
-                <div class="kandidaat-photo">👨‍💼</div>
+                <div class="kandidaat-photo">
+                    <div class="kandidaat-initials">PF</div>
+                    <div class="kandidaat-nummer-badge">1</div>
+                </div>
                 <div class="kandidaat-info">
-                    <span class="kandidaat-nummer">KANDIDAAT #1</span>
                     <h3>Piet Franssen</h3>
-                    <div class="kandidaat-functie">Lijsttrekker</div>
-                    <p>Geboren en getogen in Gulpen met 15 jaar ervaring in de gemeenteraad. Tijd voor vernieuwing en daadkracht.</p>
+                    <div class="kandidaat-functie">Lijsttrekker & Wethouder</div>
+                    <p>Sinds de oprichting het gezicht van Fractie Franssen. Ervaren bestuurder met een duidelijke visie op de toekomst van Gulpen-Wittem.</p>
                 </div>
             </div>
 
             <div class="kandidaat-card fade-in">
-                <div class="kandidaat-photo">👩‍⚕️</div>
+                <div class="kandidaat-photo">
+                    <div class="kandidaat-initials">DV</div>
+                    <div class="kandidaat-nummer-badge">2</div>
+                </div>
                 <div class="kandidaat-info">
-                    <span class="kandidaat-nummer">KANDIDAAT #2</span>
-                    <h3>Maria Jansen</h3>
-                    <div class="kandidaat-functie">Specialist Zorg & Welzijn</div>
-                    <p>Wijkverpleegkundige met passie voor goede, toegankelijke zorg voor alle inwoners.</p>
+                    <h3>Diana Vluggen</h3>
+                    <div class="kandidaat-functie">Raadslid</div>
+                    <p>Betrokken bij sociale vraagstukken en volkshuisvesting. Zet zich in voor betaalbare woningen en zorg.</p>
                 </div>
             </div>
 
             <div class="kandidaat-card fade-in">
-                <div class="kandidaat-photo">👨‍🏫</div>
+                <div class="kandidaat-photo">
+                    <div class="kandidaat-initials">QQ</div>
+                    <div class="kandidaat-nummer-badge">3</div>
+                </div>
                 <div class="kandidaat-info">
-                    <span class="kandidaat-nummer">KANDIDAAT #3</span>
-                    <h3>Quinn Peters</h3>
-                    <div class="kandidaat-functie">Specialist Onderwijs</div>
-                    <p>Basisschoolleraar die vecht voor kleine klassen en moderne schoolgebouwen voor elk kind.</p>
+                    <h3>Quinn Quadvlieg</h3>
+                    <div class="kandidaat-functie">Fractievoorzitter</div>
+                    <p>Gedreven fractievoorzitter met focus op transparant bestuur en goede verbinding met inwoners.</p>
                 </div>
             </div>
 
             <div class="kandidaat-card fade-in">
-                <div class="kandidaat-photo">👩‍💼</div>
+                <div class="kandidaat-photo">
+                    <div class="kandidaat-initials">JN</div>
+                    <div class="kandidaat-nummer-badge">4</div>
+                </div>
                 <div class="kandidaat-info">
-                    <span class="kandidaat-nummer">KANDIDAAT #4</span>
-                    <h3>Sophie Smeets</h3>
-                    <div class="kandidaat-functie">Specialist Duurzaamheid</div>
-                    <p>Milieukundige die streeft naar een groene, duurzame gemeente voor toekomstige generaties.</p>
+                    <h3>Jo Nix</h3>
+                    <div class="kandidaat-functie">Raadslid</div>
+                    <p>Expert op het gebied van ruimtelijke ordening en duurzame ontwikkeling van onze dorpen.</p>
                 </div>
             </div>
 
             <div class="kandidaat-card fade-in">
-                <div class="kandidaat-photo">👨‍🔧</div>
+                <div class="kandidaat-photo">
+                    <div class="kandidaat-initials">RR</div>
+                    <div class="kandidaat-nummer-badge">5</div>
+                </div>
                 <div class="kandidaat-info">
-                    <span class="kandidaat-nummer">KANDIDAAT #5</span>
-                    <h3>Peter de Vries</h3>
-                    <div class="kandidaat-functie">Specialist Mobiliteit</div>
-                    <p>Verkeerskundige en dagelijks fietser die werkt aan veilige wegen voor iedereen.</p>
+                    <h3>Ralf Ramakers</h3>
+                    <div class="kandidaat-functie">Raadslid</div>
+                    <p>Specialist in financiën en mobiliteit. Staat voor verantwoord financieel beleid en goede bereikbaarheid.</p>
                 </div>
             </div>
 
             <div class="kandidaat-card fade-in">
-                <div class="kandidaat-photo">👩‍💻</div>
+                <div class="kandidaat-photo">
+                    <div class="kandidaat-initials">FK</div>
+                    <div class="kandidaat-nummer-badge">12</div>
+                </div>
                 <div class="kandidaat-info">
-                    <span class="kandidaat-nummer">KANDIDAAT #6</span>
-                    <h3>Lisa Willems</h3>
-                    <div class="kandidaat-functie">Specialist Economie</div>
-                    <p>Lokale ondernemer die kansen wil creëren voor startende bedrijven en werkzoekenden.</p>
+                    <h3>Fon Kistermann</h3>
+                    <div class="kandidaat-functie">Raadslid</div>
+                    <p>Betrokken bij cultuur en verenigingsleven. Zet zich in voor behoud van lokale tradities.</p>
                 </div>
             </div>
         </div>
@@ -951,32 +1501,50 @@
 
     <footer id="contact">
         <div class="footer-content">
-            <div class="footer-logo">FRACTIE FRANSSEN</div>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
-                Samen maken we Gulpen-Wittem beter
-            </p>
-            <div class="footer-links">
-                <a href="mailto:info@fractiefranssen.nl">info@fractiefranssen.nl</a>
-                <a href="tel:+31435451234">043 - 545 12 34</a>
-                <a href="#">Privacy</a>
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
+            <div class="footer-about">
+                <h3>Fractie Franssen</h3>
+                <p>
+                    Al meer dan 20 jaar actief voor Gulpen-Wittem. 
+                    Politiek met een rechte rug, duidelijke keuzes en daadkracht.
+                </p>
+                <p>
+                    Verkiezingen: 18 maart 2026
+                </p>
             </div>
-            <div class="copyright">
-                © 2026 Fractie Franssen. Alle rechten voorbehouden.
+            <div class="footer-section">
+                <h4>Navigatie</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#resultaten">Resultaten</a></li>
+                    <li><a href="#standpunten">Standpunten</a></li>
+                    <li><a href="#kandidaten">Kandidaten</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
             </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:info@fractiefranssen.nl">info@fractiefranssen.nl</a></li>
+                    <li><a href="https://www.fractiefranssen.nl" target="_blank">www.fractiefranssen.nl</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Fractie Franssen Gulpen-Wittem. Alle rechten voorbehouden.
         </div>
     </footer>
 
     <script>
-        // Typing animation - "Voor" stays, rest types
+        // Typing animation
+        // Typing animation
         const typedTextElement = document.querySelector('.typed-text');
         const phrases = [
-            'een beter Gulpen-Wittem',
+            'os durper',
             'betaalbare woningen',
-            'het behoud van cultuur',
-            'de lokale verenigingen',
-            'iedereen'
+            'behot va os cultuur',
+            'lokale verenigingen',
+            'laeve in os durper'
         ];
         
         let phraseIndex = 0;
@@ -1011,13 +1579,24 @@
 
         setTimeout(type, 1000);
 
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
         // Modal functionality
         const standpuntCards = document.querySelectorAll('.standpunt-card');
         const modals = document.querySelectorAll('.modal');
         const closeButtons = document.querySelectorAll('.modal-close');
 
         standpuntCards.forEach(card => {
-            card.addEventListener('click', () => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
                 const modalId = 'modal-' + card.dataset.modal;
                 const modal = document.getElementById(modalId);
                 if (modal) {
@@ -1060,9 +1639,10 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
                     });
                 }
             });
