@@ -1,4 +1,4 @@
-# Fractie Franssen Website - Mobile Optimized
+# Fractie Franssen Website
 
 Deze website is volledig geoptimaliseerd voor desktop, tablet en mobiele apparaten.
 
