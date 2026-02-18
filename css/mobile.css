@@ -1,6 +1,6 @@
 /* Mobile Responsive Styles */
 
-/* Tablet Landscape and Below (1024px) */
+/* Tablet Landscape (1024px) */
 @media (max-width: 1024px) {
     .hero-grid {
         grid-template-columns: 1fr;
@@ -66,7 +66,7 @@
         display: none;
     }
 
-    /* Hero Section */
+    /* Hero sectie */
     .hero {
         min-height: auto;
         padding: 6rem 1rem 4rem;
@@ -105,7 +105,7 @@
         max-height: 300px;
     }
 
-    /* Sections */
+    /* sectiees */
     section {
         padding: 4rem 1.5rem;
     }
@@ -122,7 +122,7 @@
         font-size: 1rem;
     }
 
-    /* Grids */
+    /* grdis */
     .standpunten-grid,
     .kandidaten-grid {
         grid-template-columns: 1fr;
@@ -214,7 +214,7 @@
     }
 }
 
-/* Mobile Small (480px) */
+/* Mobile klein (480px) */
 @media (max-width: 480px) {
     .ff-logo {
         height: 50px;
@@ -274,7 +274,7 @@
     }
 }
 
-/* Landscape Mobile Phones */
+/* Landscape Mobile telefoon */
 @media (max-width: 768px) and (orientation: landscape) {
     .hero {
         min-height: auto;
@@ -294,7 +294,7 @@
     }
 }
 
-/* Prevent horizontal scroll on mobile */
+/* voorkim horizontal scroll op mobile */
 @media (max-width: 768px) {
     body {
         overflow-x: hidden;
@@ -309,7 +309,7 @@
     }
 }
 
-/* Touch-friendly clickable areas */
+/* Touch-friendly clickable gedeeltes */
 @media (hover: none) and (pointer: coarse) {
     .btn {
         min-height: 48px;
