@@ -1,4 +1,4 @@
-// Scroll animations using Intersection Observer
+// Scroll animatie met Intersection Observer
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -12,12 +12,12 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all fade-in elements
+// observe alle fade-in elementen
 document.querySelectorAll('.fade-in').forEach((el) => {
     observer.observe(el);
 });
 
-// Re-observe elements after a short delay to ensure they're ready
+// nochmaal elementen observeren na korte pauze
 setTimeout(() => {
     document.querySelectorAll('.fade-in').forEach((el) => {
         observer.observe(el);

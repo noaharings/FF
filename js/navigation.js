@@ -19,7 +19,7 @@ if (mobileMenuToggle) {
         document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
     });
 
-    // Close mobile menu when clicking on a link
+    // Menu sluiten wanneer op link geklikt wordt
     const navLinkItems = navLinks.querySelectorAll('a');
     navLinkItems.forEach(link => {
         link.addEventListener('click', () => {
@@ -29,7 +29,7 @@ if (mobileMenuToggle) {
         });
     });
 
-    // Close mobile menu when clicking outside
+    // Mobile menu sluiten wanneer erbuiten geklikt wordt
     document.addEventListener('click', function(e) {
         if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
             mobileMenuToggle.classList.remove('active');

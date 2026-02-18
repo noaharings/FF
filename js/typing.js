@@ -1,4 +1,4 @@
-// Typing animation for hero section
+// type animatie
 const typedTextElement = document.querySelector('.typed-text');
 const phrases = [
     'os durper',
@@ -40,5 +40,5 @@ function type() {
     setTimeout(type, typingSpeed);
 }
 
-// Start typing animation after page load
+// typen na page load
 setTimeout(type, 1000);
