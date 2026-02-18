@@ -14,9 +14,10 @@
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/piet.css">
 </head>
 <body>
-    <!-- Mobile Menu Toggle -->
+    <!-- Header sectie -->
     <button class="mobile-menu-toggle" aria-label="Toggle menu">
         <span></span>
         <span></span>
@@ -28,41 +29,34 @@
             <div class="logo">
                 <img src="assets/Logo Black FF.png" alt="FF Logo" class="ff-logo">
             </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#resultaten">Resultaten</a></li>
-                <li><a href="#standpunten">Standpunten</a></li>
-                <li><a href="#kandidaten">Kandidaten</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <ul class="nav-links" id="nav-links">
+                
             </ul>
         </div>
     </nav>
 
+    <!-- Hero sectie -->
     <section id="home" class="hero">
         <div class="hero-pattern"></div>
         <div class="hero-content">
             <div class="hero-grid">
                 <div class="hero-text">
-                    <h1>D'r vilt dit joar echt get te keeze in Gulpen-Wittem!</h1>
+                    <h1 id="hero-title"></h1>
                     <p class="tagline">
-                        <span class="typed-static">Vur </span><span class="typed-text"></span>
+                        <span class="typed-static" id="typed-static"></span><span class="typed-text"></span>
                     </p>
-                    <p>
-                        Sinds onze oprichting staan we voor duidelijke keuzes en daadkracht. 
-                        We zetten ons in voor het behoud van lokale cultuur, tradities en de 
-                        waarden die Gulpen-Wittem zo bijzonder maken.
-                    </p>
+                    <p id="hero-description"></p>
                     <div class="cta-group">
-                        <a href="#standpunten" class="btn btn-primary">
-                            Onze visie
+                        <a href="#standpunten" class="btn btn-primary" id="btn-primary">
+                            <span></span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                         </a>
-                        <a href="#kandidaten" class="btn btn-secondary">Onze kandidaten</a>
+                        <a href="#kandidaten" class="btn btn-secondary" id="btn-secondary"></a>
                     </div>
                 </div>
                 
                 <div class="hero-image">
-                    <img src="assets/poster.png" alt="Hero afbeelding">
+                    <img src="assets/FractieFranssenPoster01.png" alt="Hero afbeelding">
                 </div>
             </div>
         </div>
@@ -70,389 +64,123 @@
 
     <section id="resultaten" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white;">
         <div class="section-header fade-in" style="color: white;">
-            <div class="section-label" style="color: var(--accent);">Onze Prestaties</div>
-            <h2 style="color: white;">Dit hebben we bereikt</h2>
-            <p style="color: rgba(255, 255, 255, 0.85);">
-                Als coalitieпартner en met een wethouder in het college hebben we de afgelopen periode 
-                concrete resultaten behaald voor Gulpen-Wittem.
-            </p>
+            <div class="section-label" style="color: var(--accent);" id="resultaten-label"></div>
+            <h2 style="color: white;" id="resultaten-title"></h2>
+            <p style="color: rgba(255, 255, 255, 0.85);" id="resultaten-description"></p>
         </div>
 
         <div style="max-width: 1400px; margin: 0 auto;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
-                <div class="achievement-card fade-in">
-                    <div class="achievement-icon">
-                        <svg viewBox="0 0 24 24" width="40" height="40" stroke="currentColor" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                    </div>
-                    <h3>Meer sociale woningen</h3>
-                    <p>Concrete plannen voor betaalbare woningbouw in meerdere kernen, met extra aandacht voor starters en senioren.</p>
-                </div>
-
-                <div class="achievement-card fade-in">
-                    <div class="achievement-icon">
-                        <svg viewBox="0 0 24 24" width="40" height="40" stroke="currentColor" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                    </div>
-                    <h3>Verenigingen gesteund</h3>
-                    <p>Structurele ondersteuning voor lokale verenigingen en cultuurinitiatieven. Extra subsidies voor carnaval, schutterijen en muziekverenigingen.</p>
-                </div>
-
-                <div class="achievement-card fade-in">
-                    <div class="achievement-icon">
-                        <svg viewBox="0 0 24 24" width="40" height="40" stroke="currentColor" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    </div>
-                    <h3>Verkeersveiligheid verbeterd</h3>
-                    <p>30 km zones ingevoerd in woonwijken en veilige schoolroutes aangelegd voor onze kinderen.</p>
-                </div>
-
-                <div class="achievement-card fade-in">
-                    <div class="achievement-icon">
-                        <svg viewBox="0 0 24 24" width="40" height="40" stroke="currentColor" fill="none" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-                    </div>
-                    <h3>Lokale economie versterkt</h3>
-                    <p>Ondersteuning voor MKB en horecaondernemers, vooral tijdens en na coronaperiode.</p>
-                </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem;" id="achievements-grid">
+                
             </div>
 
             <div class="stats-showcase fade-in" style="background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 3rem; margin-top: 3rem; border: 1px solid rgba(255, 215, 0, 0.3);">
-                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; text-align: center; margin-bottom: 3rem; color: var(--accent);">In cijfers</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; text-align: center;">
-                    <div>
-                        <div style="font-size: 3rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem;">5</div>
-                        <div style="color: rgba(255, 255, 255, 0.9); font-weight: 500;">Zetels in de raad</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 3rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem;">1</div>
-                        <div style="color: rgba(255, 255, 255, 0.9); font-weight: 500;">Wethouder in college</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 3rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem;">20+</div>
-                        <div style="color: rgba(255, 255, 255, 0.9); font-weight: 500;">Jaar actief</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 3rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem;">100%</div>
-                        <div style="color: rgba(255, 255, 255, 0.9); font-weight: 500;">Inzet voor onze gemeente</div>
-                    </div>
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; text-align: center; margin-bottom: 3rem; color: var(--accent);" id="stats-title"></h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; text-align: center;" id="stats-grid">
+                    
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="waarom-stemmen" style="background: var(--bg-light);">
-        <div class="section-header fade-in">
-            <div class="section-label">Waarom Fractie Franssen?</div>
-            <h2>Duidelijke keuzes, daadkrachtig handelen</h2>
-            <p>
-                Dit maakt ons anders en dit is waarom u op 18 maart 2026 op ons moet stemmen.
-            </p>
-        </div>
+   <!-- Hei stjunt ver vur sectie -->
+<section id="standpunten">
+    <div class="section-header fade-in">
+        <div class="section-label" id="standpunten-label"></div>
+        <h2 id="standpunten-title"></h2>
+        <p id="standpunten-description"></p>
+    </div>
 
-        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem;">
-            <div class="reason-card fade-in">
-                <div class="reason-number">01</div>
-                <h3>Ervaring die telt</h3>
-                <p>Meer dan 20 jaar ervaring in de gemeenteraad. We kennen de gemeente en haar inwoners door en door.</p>
+    <div class="standpunten-grid" id="standpunten-grid">
+       
+</section>
+
+<!-- Piet sectie -->
+<section id="over-piet">
+    <div class="section-header fade-in">
+        <div class="section-label" id="piet-label"></div>
+        <h2 id="piet-title"></h2>
+        <p id="piet-description"></p>
+    </div>
+
+    <div class="piet-container">
+        
+        <div class="piet-hero fade-in">
+            <div class="piet-photo-frame">
+                <img src="assets/piet-persoonlijk.jpeg" alt="Piet Franssen" class="piet-foto">
             </div>
-
-            <div class="reason-card fade-in">
-                <div class="reason-number">02</div>
-                <h3>Bewezen resultaten</h3>
-                <p>Als coalitiepartner met een wethouder hebben we concreet resultaat geboekt voor Gulpen-Wittem.</p>
-            </div>
-
-            <div class="reason-card fade-in">
-                <div class="reason-number">03</div>
-                <h3>Cultuur & tradities</h3>
-                <p>Wij staan voor het behoud van wat onze gemeente bijzonder maakt: onze cultuur, tradities en verenigingsleven.</p>
-            </div>
-
-            <div class="reason-card fade-in">
-                <div class="reason-number">04</div>
-                <h3>Politiek met een rechte rug</h3>
-                <p>Wij durven duidelijke standpunten in te nemen en staan voor onze principes, ook als dat niet populair is.</p>
-            </div>
-
-            <div class="reason-card fade-in">
-                <div class="reason-number">05</div>
-                <h3>Luisteren naar inwoners</h3>
-                <p>We zijn bereikbaar, benaderbaar en nemen de zorgen van inwoners serieus. Uw stem is onze richting.</p>
-            </div>
-
-            <div class="reason-card fade-in">
-                <div class="reason-number">06</div>
-                <h3>Lokaal geankerd</h3>
-                <p>Geboren en getogen in Gulpen-Wittem. We leven hier, werken hier en kennen de uitdagingen van binnenuit.</p>
+            <div class="piet-intro">
+                <h3 id="piet-intro-title"></h3>
+                <div id="piet-intro-paragraphs"></div>
+                <h4 id="piet-contact-label"></h4>
+                <div class="piet-contact">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    <a href="tel:0652763732" id="piet-phone"></a>
+                </div>
             </div>
         </div>
 
-        <div style="text-align: center; margin-top: 4rem;">
-            <a href="#kandidaten" class="btn btn-primary">Ontmoet onze kandidaten</a>
-        </div>
-    </section>
-
-    <section id="standpunten">
-        <div class="section-header fade-in">
-            <div class="section-label">Onze Prioriteiten</div>
-            <h2>Waar wij voor staan</h2>
-            <p>
-                Deze kernpunten vormen de basis van ons verkiezingsprogramma. 
-                Klik op een onderwerp voor meer informatie over onze concrete plannen.
-            </p>
+        
+        <div class="piet-story" id="piet-stories">
+            
         </div>
 
-        <div class="standpunten-grid">
-            <div class="standpunt-card fade-in" data-modal="woningen">
-                <div class="standpunt-header">
-                    <div class="standpunt-icon-box">
-                        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                    </div>
-                    <div>
-                        <h3>Betaalbare Woningen</h3>
-                    </div>
-                </div>
-                <p>Iedereen heeft recht op een betaalbare, veilige woning. We investeren in sociale woningbouw en houden huurprijzen onder controle.</p>
-                <a href="#" class="read-more">
-                    Lees meer
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </a>
-            </div>
-
-            <div class="standpunt-card fade-in" data-modal="groen">
-                <div class="standpunt-header">
-                    <div class="standpunt-icon-box">
-                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                    </div>
-                    <div>
-                        <h3>Leefbare Dorpen</h3>
-                    </div>
-                </div>
-                <p>Investeren in groen, veilige wijken en behoud van onze natuurgebieden voor toekomstige generaties.</p>
-                <a href="#" class="read-more">
-                    Lees meer
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </a>
-            </div>
-
-            <div class="standpunt-card fade-in" data-modal="onderwijs">
-                <div class="standpunt-header">
-                    <div class="standpunt-icon-box">
-                        <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-                    </div>
-                    <div>
-                        <h3>Onderwijs & Jeugd</h3>
-                    </div>
-                </div>
-                <p>Kwaliteit onderwijs en veilige, moderne faciliteiten voor al onze kinderen en jongeren.</p>
-                <a href="#" class="read-more">
-                    Lees meer
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </a>
-            </div>
-
-            <div class="standpunt-card fade-in" data-modal="verkeer">
-                <div class="standpunt-header">
-                    <div class="standpunt-icon-box">
-                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    </div>
-                    <div>
-                        <h3>Mobiliteit & Bereikbaarheid</h3>
-                    </div>
-                </div>
-                <p>Veilige wegen, goede fietspaden en betrouwbaar openbaar vervoer voor alle inwoners.</p>
-                <a href="#" class="read-more">
-                    Lees meer
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </a>
-            </div>
-
-            <div class="standpunt-card fade-in" data-modal="economie">
-                <div class="standpunt-header">
-                    <div class="standpunt-icon-box">
-                        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-                    </div>
-                    <div>
-                        <h3>Lokale Economie</h3>
-                    </div>
-                </div>
-                <p>Steun voor ondernemers, werkgelegenheid en een bloeiend lokaal bedrijfsleven.</p>
-                <a href="#" class="read-more">
-                    Lees meer
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </a>
-            </div>
-
-            <div class="standpunt-card fade-in" data-modal="cultuur">
-                <div class="standpunt-header">
-                    <div class="standpunt-icon-box">
-                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                    </div>
-                    <div>
-                        <h3>Cultuur & Tradities</h3>
-                    </div>
-                </div>
-                <p>Behoud en versterking van lokale cultuur, tradities en verenigingsleven die onze gemeenschap definiëren.</p>
-                <a href="#" class="read-more">
-                    Lees meer
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </a>
-            </div>
-
-            <div class="standpunt-card fade-in" data-modal="zorg">
-                <div class="standpunt-header">
-                    <div class="standpunt-icon-box">
-                        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
-                    </div>
-                    <div>
-                        <h3>Zorg & Welzijn</h3>
-                    </div>
-                </div>
-                <p>Toegankelijke, betaalbare zorg voor iedereen met extra aandacht voor ouderen en kwetsbaren.</p>
-                <a href="#" class="read-more">
-                    Lees meer
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </a>
-            </div>
-
-            <div class="standpunt-card fade-in" data-modal="recreatie">
-                <div class="standpunt-header">
-                    <div class="standpunt-icon-box">
-                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6m0 6v6m5.2-14.2l-4.2 4.2m0 0l-4.2-4.2m8.4 8.4l-4.2-4.2m0 0l-4.2 4.2M23 12h-6m-6 0H5"></path></svg>
-                    </div>
-                    <div>
-                        <h3>Recreatie & Toerisme</h3>
-                    </div>
-                </div>
-                <p>Zwemwater behouden, toerisme stimuleren en investeren in recreatieve voorzieningen zoals Mosaqua.</p>
-                <a href="#" class="read-more">
-                    Lees meer
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </a>
+        <!-- Visie piet -->
+        <div class="piet-vision fade-in">
+            <div class="piet-vision-content">
+                <h4 id="piet-vision-title"></h4>
+                <div id="piet-vision-paragraphs"></div>
+                <div class="signature" id="piet-signature"></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Modal Container -->
+    
     <div id="modals-container"></div>
+
+<!-- Kandidaten -->
 
     <section id="kandidaten">
         <div class="section-header fade-in">
-            <div class="section-label">Ons Team</div>
-            <h2>Kandidaten 2026</h2>
-            <p>
-                Ervaren en gedreven mensen met een hart voor Gulpen-Wittem. 
-                Samen staan we voor duidelijke keuzes en daadkrachtig bestuur.
-            </p>
+            <div class="section-label" id="kandidaten-label"></div>
+            <h2 id="kandidaten-title"></h2>
+            <p id="kandidaten-description"></p>
+            <p id="kandidaten-voorkeur" class="kandidaten-voorkeur"></p>
         </div>
 
-        <div class="kandidaten-grid">
-            <div class="kandidaat-card fade-in">
-                <div class="kandidaat-photo">
-                    <img src="assets/01 lijstvakje.jpg" alt="Piet foto" class="piet-foto">
-                </div>
-                <div class="kandidaat-info">
-                    <h3>Piet Franssen</h3>
-                    <div class="kandidaat-functie">Lijsttrekker & Wethouder</div>
-                    <p>Sinds de oprichting het gezicht van Fractie Franssen. Ervaren bestuurder met een duidelijke visie op de toekomst van Gulpen-Wittem.</p>
-                </div>
-            </div>
-
-            <div class="kandidaat-card fade-in">
-                <div class="kandidaat-photo">
-                    <div class="kandidaat-initials">DV</div>
-                    <div class="kandidaat-nummer-badge">2</div>
-                </div>
-                <div class="kandidaat-info">
-                    <h3>Diana Vluggen</h3>
-                    <div class="kandidaat-functie">Raadslid</div>
-                    <p>Betrokken bij sociale vraagstukken en volkshuisvesting. Zet zich in voor betaalbare woningen en zorg.</p>
-                </div>
-            </div>
-
-            <div class="kandidaat-card fade-in">
-                <div class="kandidaat-photo">
-                    <div class="kandidaat-initials">QQ</div>
-                    <div class="kandidaat-nummer-badge">3</div>
-                </div>
-                <div class="kandidaat-info">
-                    <h3>Quinn Quadvlieg</h3>
-                    <div class="kandidaat-functie">Fractievoorzitter</div>
-                    <p>Gedreven fractievoorzitter met focus op transparant bestuur en goede verbinding met inwoners.</p>
-                </div>
-            </div>
-
-            <div class="kandidaat-card fade-in">
-                <div class="kandidaat-photo">
-                    <div class="kandidaat-initials">JN</div>
-                    <div class="kandidaat-nummer-badge">4</div>
-                </div>
-                <div class="kandidaat-info">
-                    <h3>Jo Nix</h3>
-                    <div class="kandidaat-functie">Raadslid</div>
-                    <p>Expert op het gebied van ruimtelijke ordening en duurzame ontwikkeling van onze dorpen.</p>
-                </div>
-            </div>
-
-            <div class="kandidaat-card fade-in">
-                <div class="kandidaat-photo">
-                    <div class="kandidaat-initials">RR</div>
-                    <div class="kandidaat-nummer-badge">5</div>
-                </div>
-                <div class="kandidaat-info">
-                    <h3>Ralf Ramakers</h3>
-                    <div class="kandidaat-functie">Raadslid</div>
-                    <p>Specialist in financiën en mobiliteit. Staat voor verantwoord financieel beleid en goede bereikbaarheid.</p>
-                </div>
-            </div>
-
-            <div class="kandidaat-card fade-in">
-                <div class="kandidaat-photo">
-                    <div class="kandidaat-initials">FK</div>
-                    <div class="kandidaat-nummer-badge">12</div>
-                </div>
-                <div class="kandidaat-info">
-                    <h3>Fon Kistermann</h3>
-                    <div class="kandidaat-functie">Raadslid</div>
-                    <p>Betrokken bij cultuur en verenigingsleven. Zet zich in voor behoud van lokale tradities.</p>
-                </div>
-            </div>
+        <div class="kandidaten-grid" id="kandidaten-grid">
+            
         </div>
     </section>
 
     <footer id="contact">
         <div class="footer-content">
             <div class="footer-about">
-                <h3>Fractie Franssen</h3>
-                <p>
-                    Al meer dan 20 jaar actief voor Gulpen-Wittem. 
-                    Politiek met een rechte rug, duidelijke keuzes en daadkracht.
-                </p>
-                <p>
-                    Verkiezingen: 18 maart 2026
-                </p>
+                <h3 id="footer-title"></h3>
+                <p id="footer-description"></p>
+                <p id="footer-election-date"></p>
             </div>
             <div class="footer-section">
-                <h4>Navigatie</h4>
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#resultaten">Resultaten</a></li>
-                    <li><a href="#standpunten">Standpunten</a></li>
-                    <li><a href="#kandidaten">Kandidaten</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                <h4 id="footer-nav-title"></h4>
+                <ul class="footer-links" id="footer-links">
+                    
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Contact</h4>
+                <h4 id="footer-contact-title"></h4>
                 <ul class="footer-links">
-                    <li><a href="mailto:info@fractiefranssen.nl">info@fractiefranssen.nl</a></li>
-                    <li><a href="https://www.fractiefranssen.nl" target="_blank">www.fractiefranssen.nl</a></li>
-                    <li><a href="#">Privacy</a></li>
+                    <li><a href="mailto:info@fractiefranssen.nl" id="footer-email"></a></li>
+                    <li><a href="https://www.fractiefranssen.nl" target="_blank" id="footer-website"></a></li>
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            © 2026 Fractie Franssen Gulpen-Wittem. Alle rechten voorbehouden.
-        </div>
+        <div class="footer-bottom" id="footer-bottom"></div>
     </footer>
 
+    <script src="js/content-loader.js"></script>
     <script src="js/typing.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/modals.js"></script>
